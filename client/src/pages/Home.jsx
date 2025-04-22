@@ -13,7 +13,7 @@ const Home = () => {
   const[dataRecieved,setDataRecieved] = useState(false);
   const[datasent,setDatasent] = useState(false);
 
-  const {isLoggedIn,theme} = useContext(AppContext);
+  const {isLoggedIn,theme , backendURL} = useContext(AppContext);
   //to pass as a prompt to tthe api 
   const {McqCount, setMcqCount} = useContext(McqContext)
   const handleFileChange = (e) => {
@@ -22,6 +22,7 @@ const Home = () => {
 
   const handleUpload = async (e) => {
     e.preventDefault();
+     axios.defaults.withCredentials = true;
 
     if (!pdfFile) {
       setMessage('Please select a PDF file.');
@@ -34,7 +35,7 @@ const Home = () => {
     formData.append('mcqCount',McqCount)
 
     try {
-      const res = await axios.post('http://localhost:3000/api/upload', formData, {
+      const res = await axios.post( backendURL + '/api/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setMessage(res.data.message);
