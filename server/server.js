@@ -15,9 +15,15 @@ app.use(cookieParser());
 const PORT= process.env.PORT || 3000;
 
 app.use(express.urlencoded({extended:false}))
-app.use(cors({ origin: 'https://autoquiz-frontend.onrender.com',
-    credentials: true   
- }))
+app.use(cors({
+  origin: 'https://autoquiz-frontend.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
+app.options('*', cors());
+
 app.get('/',(req,res)=>
 {
    
