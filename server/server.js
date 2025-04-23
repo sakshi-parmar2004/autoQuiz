@@ -17,8 +17,8 @@ const PORT= process.env.PORT || 3000;
 app.use(express.urlencoded({extended:false}))
 app.use(cors({
   origin: 'https://autoquiz-frontend.onrender.com',
-  // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  // allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
