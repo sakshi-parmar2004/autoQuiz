@@ -16,7 +16,7 @@ const PORT= process.env.PORT || 3000;
 
 app.use(express.urlencoded({extended:false}))
 app.use(cors({
-  origin: 'https://auto-quiz-1ncf.vercel.app/',
+  origin: 'https://auto-quiz-1ncf.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
